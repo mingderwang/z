@@ -1,12 +1,14 @@
 {
   "name": "z",
-  "module": "index.ts",
+  "version": "v0.0.2",
+  "license": "MIT",
+  "private": true,
   "type": "module",
   "scripts": {
-    "start": "bun run ./src/main.ts",
-    "dev": "bun run --hot ./src/main.ts",
+    "start": "bun run ./src/main.tsx",
+    "dev": "bun run --hot ./src/main.tsx",
     "test": "bun --watch test",
-    "build": "bun-vercel ./src/main.ts"
+    "build": "bun-vercel ./src/main.tsx"
   },
   "devDependencies": {
     "bun-types": "latest",
@@ -16,6 +18,8 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "elysia": "^0.7.30"
+    "@elysiajs/html": "^0.7.3",
+    "elysia": "^0.7.30",
+    "react": "^18.2.0"
   }
 }

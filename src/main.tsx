@@ -1,4 +1,5 @@
 import { Elysia, t } from 'elysia';
+//import { html } from '@elysiajs/html'
 
 // plugin 
 
@@ -7,9 +8,41 @@ const plugin = new Elysia()
 
 // router for bun run 
 
+const html = new Elysia()
+    .onAfterHandle(( { set, body }) => {
+        if (/^/.test(body))
+            set.headers['Content-Type'] = 'text/html; charset=utf8'
+    })
+
 const app = new Elysia()
 
+// inner
+.use(html)
+.get('/inner', () => '<h1>Hello inner</h1>')
+
 // use plugin
+// use Type check 
+// https://elysiajs.com/validation/primitive-type.html#basic-type
+
+    .use(html)
+    .get('/', () => <h1>Hello Ming</h1>)
+    .get(
+        '/hello',
+        ({ query: { name } }) => `
+            <html lang='en'>
+                <head>
+                    <title>Hello World</title>
+                </head>
+                <body>
+                    <h1>Hello ${name} </h1>
+                </body>
+            </html>`,
+        {
+  	  query: t.Object({
+            name: t.String({ default: 'World' })
+	  })
+        }
+    )
 
     .state('plugin-version', 1)
     .use(plugin)
@@ -44,7 +77,6 @@ const app = new Elysia()
 
 // basic
 
- .get('/', () => 'hello ming')
  .get('/ping', () => 'pong')
  .get('/id/:id', ({ params: { id } }) => id)
 
@@ -93,6 +125,10 @@ const app = new Elysia()
         // Invalid: will throws error, and TypeScript will report error
         .get('/invalid', () => 1)
     )
+
+// schema
+
+    .get('/query', ({ query: { name } }) => name)
 
 // export default for bun to run this file
 
