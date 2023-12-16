@@ -1,6 +1,8 @@
 import { Elysia, t } from 'elysia';
 //import { html } from '@elysiajs/html'
 
+// logger
+
 // plugin 
 
 const plugin = new Elysia()
@@ -15,6 +17,14 @@ const html = new Elysia()
     })
 
 const app = new Elysia()
+   .get('/ido/:id', ({ params: { id }}) => id, {
+        params: t.Object({
+            id: t.Numeric()
+        })
+    })
+
+    .get('/context', (context) => (context)
+    )
 
 // inner
 .use(html)
@@ -25,10 +35,17 @@ const app = new Elysia()
 // https://elysiajs.com/validation/primitive-type.html#basic-type
 
     .use(html)
-    .get('/', () => <h1>Hello Ming</h1>)
+    .get('/x', ({ query: { name } , set}) => {
+        set.status = 418
+        set.headers['x-powered-by'] = 'XXX'
+
+    return `<h1>hello ${name}</h1>`} )
     .get(
         '/hello',
-        ({ query: { name } }) => `
+        ({ query: { name, age } }) => {  
+           
+return
+        `
             <html lang='en'>
                 <head>
                     <title>Hello World</title>
@@ -36,10 +53,12 @@ const app = new Elysia()
                 <body>
                     <h1>Hello ${name} </h1>
                 </body>
-            </html>`,
+            </html>`
+        },
         {
   	  query: t.Object({
-            name: t.String({ default: 'World' })
+        age: t.Number({ default: '18' }),
+        name: t.String({ default: 'World' })
 	  })
         }
     )
