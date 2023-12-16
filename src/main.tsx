@@ -1,5 +1,6 @@
 import { Elysia, t } from 'elysia';
 //import { html } from '@elysiajs/html'
+import { swagger } from '@elysiajs/swagger'
 
 // logger
 
@@ -17,6 +18,7 @@ const html = new Elysia()
     })
 
 const app = new Elysia()
+    .use(swagger())
    .get('/ido/:id', ({ params: { id }}) => id, {
         params: t.Object({
             id: t.Numeric()
