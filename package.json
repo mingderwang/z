@@ -4,6 +4,7 @@
   "license": "MIT",
   "private": true,
   "type": "module",
+  "module": "index.ts",
   "scripts": {
     "start": "bun run ./src/main.ts",
     "dev": "bun run --hot ./src/main.ts",
