@@ -1,6 +1,6 @@
 {
   "name": "z",
-  "version": "v0.1.0",
+  "version": "v0.1.1",
   "license": "MIT",
   "private": true,
   "type": "module",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@elysiajs/html": "^0.7.3",
-    "@elysiajs/swagger": "^0.7.4",
+    "@elysiajs/swagger": "^1.1.1",
     "elysia": "^0.7.30",
     "react": "^18.2.0"
   }
