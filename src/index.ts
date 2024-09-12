@@ -1,4 +1,4 @@
-import app from './main.tsx'
+import app from './main.ts'
 const server = Bun.serve({
   port: 3001,
   async fetch(request: Request, server: Server) {

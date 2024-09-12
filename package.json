@@ -1,14 +1,14 @@
 {
   "name": "z",
-  "version": "v0.0.2",
+  "version": "v0.0.3",
   "license": "MIT",
   "private": true,
   "type": "module",
   "scripts": {
-    "start": "bun run ./src/main.tsx",
-    "dev": "bun run --hot ./src/main.tsx",
+    "start": "bun run ./src/main.ts",
+    "dev": "bun run --hot ./src/main.ts",
     "test": "bun --watch test",
-    "build": "bun-vercel ./src/main.tsx"
+    "build": "bun-vercel ./src/main.ts"
   },
   "devDependencies": {
     "bun-types": "latest",
