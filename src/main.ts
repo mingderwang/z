@@ -18,7 +18,6 @@ const html = new Elysia()
     })
 
 const app = new Elysia()
-    .use(swagger())
    .get('/ido/:id', ({ params: { id }}) => id, {
         params: t.Object({
             id: t.Numeric()
@@ -150,6 +149,10 @@ return
 // schema
 
     .get('/query', ({ query: { name } }) => name)
+
+// swagger
+
+    .use(swagger())
 
 // export default for bun to run this file
 
